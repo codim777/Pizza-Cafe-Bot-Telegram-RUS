@@ -20,6 +20,11 @@ async def specify_name(message:Message,state:FSMContext):
         await message.answer('Нет такой категории',reply_markup=template('Отменить',placeholder='Укажите категорию',size=(1,)))
         await session.close()
         return
+    item=await session.scalar(select(Item).where(Item.category==category.id))
+    await session.close()
+    if item is None:
+        await message.answer('Нет товаров такой категории',reply_markup=template('Отменить',placeholder='Укажите название товара',size=(1,)))
+        return
     await message.answer('Укажите название товара',reply_markup=template('Назад','Отменить',placeholder='Укажите название товара',size=(2,)))
     await state.update_data(category=message.text.lower())
     await state.set_state(Delete_item.name)

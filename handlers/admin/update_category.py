@@ -65,7 +65,7 @@ async def set_value(message:Message,state:FSMContext):
         await message.answer('Введено неверное значение',reply_markup=template('Назад','Отменить',placeholder='Загрузите изображение',size=(2,)))
         return
     await state.update_data(value=message.photo[-1].file_id)
-    await message.answer(f'Изменить:',reply_markup=template('Изменить','Назад','Отменить',placeholder='Выберите опцию',size=(1,2)))
+    await message.answer(f'Вы уверены?:',reply_markup=template('Изменить','Назад','Отменить',placeholder='Выберите опцию',size=(1,2)))
     await state.set_state(Update_category.finish)
     await message.delete()
     

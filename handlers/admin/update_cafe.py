@@ -37,7 +37,7 @@ async def update_cafe(message:Message):
 @router.message(Update_cafe.prop, F.text.lower()=='назад')
 async def update_cafe(message:Message,state:FSMContext):
     await state.set_state(Update_cafe.cafe)
-    await message.answer('Укажите адрес в следующем порядке: <b><i>Страна, Город, Улица, Дом</i></b>',reply_markup=template('Отменить',
+    await message.answer('Укажите адрес в следующем порядке: <b><i>Страна, Город, Улица, дом</i></b>',reply_markup=template('Отменить',
         	placeholder='Укажите адрес кафе',size=(1,)))
     await message.delete()
     

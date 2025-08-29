@@ -50,7 +50,7 @@ async def post_cafe(message:Message,state:FSMContext):
 @router.message(StateFilter(Post_cafe.finish),F.text.lower()=='назад')
 async def post_cafe(message:Message,state:FSMContext):
     await state.set_state(Post_cafe.cafe)
-    await message.answer('Задайте локацию в следующем порядке: <b><i>Страна, Город, Улица, Дом</i></b>',
+    await message.answer('Задайте локацию в следующем порядке: <b><i>Страна, Город, Улица, дом</i></b>',
         	placeholder='Задайте адрес кафе',reply_markup=template('Отменить',size=(1,)))
     await message.delete()
 
